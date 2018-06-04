@@ -1,0 +1,26 @@
+
+
+<% title @product.title %>
+
+<% meta_description @product.description %>
+
+<div class="item" style="width:350px; height:450px; margin-top:60px; margin-left:30px; border: 5px solid pink">
+        <%= image_tag(@product.image_url ,:width => 300, :y => 410,) %>
+     <div classs="descr"  style="background-color:powderblue;"> 
+        <h1 style="background-color:powderblue;"><%= @product.title %></h1>
+        
+        
+      
+        <h2 style="background-color:powderblue;"><%= @product.description %></h2>
+        <div class="price_line">
+        <span class="price"><%= number_to_currency(@product.price)%></span>
+        
+        
+        </div> 
+       </div> 
+      </div>
+
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

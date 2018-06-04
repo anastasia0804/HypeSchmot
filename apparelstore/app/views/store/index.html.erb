@@ -1,0 +1,26 @@
+
+
+
+
+<% @products.in_groups_of(2, false).each do |group| %>
+
+   <div class="entry">
+
+    <% group.each do |product| %>
+      <div class="item">
+        <%= image_tag(product.image_url, class: 'list_image') %>
+        <h3><%= product.title %></h3>
+
+
+
+        <h4><%= product.description %></h4>
+        <div class="price_line">
+        <span class="price"><%= number_to_currency(product.price)%></span>
+        <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
+        <%= button_to 'Show', product %>
+        </div>
+      </div>
+   <% end %>
+
+  </div>
+<% end %>

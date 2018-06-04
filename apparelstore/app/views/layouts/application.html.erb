@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HYPE online apparel store</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag  'application' %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+
+  <body class="<%= controller.controller_name %>" onload="fScrollMove('div_scroll');" onunload="document.forms(0).submit()";>
+  <div  id="div_scroll"  onscroll="fScroll(this);">
+   <ul>
+     <li><a href="/"><img src="https://customers.seomanager.com/knowledgegraph/logo/renarts_myshopify_com_logo.png" style="height:70px; width:250px;"></a></li>
+
+   </ul>
+  <div id="columns">
+  	<div id="side">
+      <div id="cart">
+
+        <% if @cart != nil %>
+        <%= render @cart %>
+        <% end %>
+
+      </div>
+     </div>
+    <div id="main">
+      
+      <%= yield %>
+    </div>
+   </div>
+ </div>
+<script>
+
+// function saves scroll position
+function fScroll(val)
+{
+        var hidScroll = document.getElementById('hidScroll');
+        hidScroll.value = val.scrollTop;
+}
+
+// function moves scroll position to saved value
+function fScrollMove(what)
+{
+        var hidScroll = document.getElementById('hidScroll');
+        document.getElementById(what).scrollTop = hidScroll.value;
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+}
+</script>
+  </body>
+</html>
